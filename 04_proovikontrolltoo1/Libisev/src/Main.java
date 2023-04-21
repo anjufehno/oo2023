@@ -1,30 +1,35 @@
 import java.util.Arrays;
 
 public class Main {
-    static int[] arvud = {1, 2, 3, 4, 5};
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        System.out.println(aritmKeskmine(3, 4, 5));
+        System.out.println(aritmKeskmine(5, 5, 6));
 
-        System.out.println(aritKeskmine(5, 5, 5));
 
-        System.out.println(libisevKeskmine2(new double[]{1, 3, 4, 6, 1, 9}));
+        double[] sisend = {3, 4, 5, 6};
+        System.out.println(Arrays.toString(libisevKeskmine(sisend)));
+
+        LibisevKeskmine libisev = new LibisevKeskmine(2,3,4);
+        libisev.lisaArv(4);
+        System.out.println(libisev.arvudKeskmisega);
+        libisev.lisaArv(5);
+        libisev.lisaArv(5);
+        System.out.println(libisev.arvudKeskmisega);
     }
 
-    private static double aritKeskmine(double first, double second, double third){
-        return (first + second + third) / 3;
+
+
+    private static double aritmKeskmine(double arv1, double arv2, double arv3){
+        return (arv1 + arv2 + arv3) / 3;
     }
 
 
-    private static double libisevKeskmine2(double[] arvud){
-        double[] lastElements = new double[]{arvud[arvud.length - 2], arvud[arvud.length-1]};
-        return (lastElements[0] + lastElements[1]) / 2;
-    }
-
-    private static double[] libisevKeskmine3(double[] arvud){
-        double[] valjund = new double[arvud.length - 2];
-        for (int i = 0; i < valjund.length; i++) {
-            valjund[i] = (valjund[i] + valjund[i+1] + valjund[i+2]) / 3;
+    private static double[] libisevKeskmine(double[] arvud){
+        double[] valjund = new double[arvud.length-2];
+        for (int i = 0; i < arvud.length-2; i++) { 
+            valjund[i] = (arvud [i] + arvud[i+1] + arvud[i+2]) / 3;
         }
         return valjund;
     }
+
 }
